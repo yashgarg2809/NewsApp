@@ -1,0 +1,7 @@
+.on-hover-naver{
+    transition: all .2s ease-in-out;
+}
+
+.on-hover-naver:hover{
+    transform: scale(1.5)
+}
