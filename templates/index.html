@@ -1,4 +1,57 @@
-{% extends "base.html" %} {% block hello %} {% for art in articles %}
+{% extends "base.html" %} 
+
+
+
+
+{% block hello %} 
+
+
+<div class="container m-2">
+  <h3>
+    Top News Coming From India...
+  </h3>
+</div>
+<div id="carouselExampleAutoplaying" class="carousel slide bg-light" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    {% for caritem in base.articles|slice:":3" %}
+    {% comment %} {{caritem.title}} {% endcomment %}
+    <div class="carousel-item {% if forloop.counter == 1 %} active{% endif %}">
+      <img style="height:450px;width:auto;" src="{{caritem.urlToImage|default:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png' }}" class="d-block w-100" alt="...">
+      <h5 class = "text-dark text-center">{{caritem.title|slice:":100"}}...</h5>
+      
+    </div>
+
+    {% endfor %}
+
+    {% comment %} <div class="carousel-item active">
+      <img src="" class="d-block w-100" alt="...">
+    </div>
+
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div> {% endcomment %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+{% for art in x.articles %}
+
+
+
 
 
 <!-- <link rel="stylesheet" href="./basics.css"> -->

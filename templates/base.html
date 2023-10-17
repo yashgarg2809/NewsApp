@@ -48,6 +48,18 @@
           <a class="nav-link" aria-current="page" href="/newsletter/">NewsLetter</a>
         </li>
       </ul>
+
+      <form method = "POST">
+        {% csrf_token %}
+        <select name="country" id="country">
+          <option value="in" selected>India</option>
+          <option value="us">USA</option>
+          <option value="ca">Canada</option>
+        </select>
+        <button class="btn btn-primary submit">
+          Submit
+        </button>
+      </form>
       <form class="d-flex" role="search" action="" autocomplete="off">
         <input class="form-control me-2" type="search" id="q" name = "q" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -55,6 +67,10 @@
     </div>
   </div>
 </nav>
+
+
+
+
 
     <div class="row">
 

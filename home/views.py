@@ -4,6 +4,32 @@ import requests
 import json
 # Create your views here.
 
+def countryCheck(request):
+    context = {
+        "country":"us",
+        "x":{},
+        "base":{},
+    }
+    # url = ("https://newsapi.org/v2/top-headlines?country=in&pageSize=100&apiKey=b794fa36db5f4020b8f4630f2c54b917")
+    
+    if(request.method == "POST"):
+        countryi = request.POST.get('country')
+        context["country"] = countryi
+        
+    url = ("https://newsapi.org/v2/top-headlines?country="+context["country"]+"&apiKey=b794fa36db5f4020b8f4630f2c54b917&pageSize=100")
+    print(url)
+    response = requests.get(url)
+    xi = response.json()
+    context["x"] = xi
+    url = ("https://newsapi.org/v2/top-headlines?country=in&pageSize=100&apiKey=b794fa36db5f4020b8f4630f2c54b917&pageSize=3")
+    response = requests.get(url)
+    bi = response.json()
+    print("new uel is ", url)
+    context["base"] = bi
+    print(context["base"]["articles"])
+    
+    return render(request,'index.html',context)
+
 
 def index(request):
     print("Visited here")
